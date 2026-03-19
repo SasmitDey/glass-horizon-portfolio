@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Training", href: "#training" },
   { label: "Education", href: "#education" },
+  { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -47,11 +48,7 @@ const Navbar = () => {
         scrolled ? "glass-strong" : "bg-transparent"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-        <a href="#" className="font-display font-bold text-sm gradient-text">
-          SD.
-        </a>
-
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-center h-14">
         <div className="hidden md:flex gap-0.5">
           {navLinks.map(({ label, href }) => (
             <a
