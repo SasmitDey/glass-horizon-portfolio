@@ -12,9 +12,11 @@ import EducationSection from "@/components/EducationSection";
 import ResumeSection from "@/components/ResumeSection";
 import ContactSection from "@/components/ContactSection";
 import SectionReveal from "@/components/SectionReveal";
+import CursorEffect from "@/components/CursorEffect";
 
 const Index = () => (
   <div className="relative min-h-screen overflow-x-hidden">
+    <CursorEffect />
     <FloatingOrbs />
     <ParticleBackground />
     <Navbar />
