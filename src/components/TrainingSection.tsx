@@ -45,12 +45,14 @@ const TrainingSection = () => (
             <h3 className="font-display font-semibold text-foreground">Certifications</h3>
           </div>
           {[
-            { name: "AI-powered NLP", issuer: "AlgoTutor", date: "Jul 2025" },
-            { name: "Computer Networking", issuer: "Google / Coursera", date: "Sep 2024" },
+            { name: "AI-powered NLP", issuer: "AlgoTutor", date: "Jul 2025", link: "https://drive.google.com/file/d/1jXeuuX-2J8588vgFVrDCihUR-OtsFS1X/view?usp=sharing" },
+            { name: "Computer Networking", issuer: "Google / Coursera", date: "Sep 2024", link: "https://www.coursera.org/account/accomplishments/verify/6EMLK93XBCU2?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" },
           ].map((cert) => (
             <div key={cert.name} className="p-4 rounded-xl bg-muted/30 border border-border">
               <div className="flex items-center justify-between">
-                <span className="font-display text-sm font-medium text-foreground">{cert.name}</span>
+                <a href={cert.link} target="_blank" rel="noopener noreferrer" className="font-display text-sm font-medium text-foreground hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4">
+                  {cert.name}
+                </a>
                 <span className="px-2 py-0.5 text-[10px] rounded-full bg-secondary/10 text-secondary font-semibold">{cert.issuer}</span>
               </div>
               <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
