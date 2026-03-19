@@ -29,7 +29,7 @@ const SkillsSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
-            className="glass rounded-2xl p-5 group hover:border-primary/20 transition-colors"
+            className={`glass rounded-2xl p-5 group hover:border-primary/20 transition-colors ${i === categories.length - 1 && categories.length % 2 !== 0 ? "md:col-span-2 md:max-w-md md:mx-auto" : ""}`}
           >
             <div className="flex items-center gap-2.5 mb-3">
               <span className="text-primary">{cat.icon}</span>
