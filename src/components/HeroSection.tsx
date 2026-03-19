@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 
-const roles = ["AI Developer", "Full Stack Engineer", "Problem Solver"];
+const roles = ["AI Developer", "Problem Solver"];
 
 const ScrambleText = ({ text }: { text: string }) => {
   const [displayed, setDisplayed] = useState("");
