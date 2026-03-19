@@ -1,16 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import ParticleBackground from "@/components/ParticleBackground";
+import FloatingOrbs from "@/components/FloatingOrbs";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import SkillsSection from "@/components/SkillsSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import TrainingSection from "@/components/TrainingSection";
+import ToolsTable from "@/components/ToolsTable";
+import AchievementsSection from "@/components/AchievementsSection";
+import EducationSection from "@/components/EducationSection";
+import ContactSection from "@/components/ContactSection";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
-  );
-};
-
-const Index = PlaceholderIndex;
+const Index = () => (
+  <div className="relative min-h-screen overflow-x-hidden">
+    <FloatingOrbs />
+    <ParticleBackground />
+    <Navbar />
+    <main className="relative z-10">
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <TrainingSection />
+      <ToolsTable />
+      <AchievementsSection />
+      <EducationSection />
+      <ContactSection />
+    </main>
+  </div>
+);
 
 export default Index;
