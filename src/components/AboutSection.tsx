@@ -1,38 +1,52 @@
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+
+const stats = [
+  { value: "75%", label: "LLM hallucination reduction" },
+  { value: "< 200ms", label: "RAG retrieval latency" },
+  { value: "10K+", label: "Records handled in Budgie" },
+  { value: "90%", label: "Trip planning time saved" },
+];
 
 const AboutSection = () => (
-  <section id="about" className="py-24 px-4">
-    <div className="max-w-4xl mx-auto">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="font-display font-bold text-3xl md:text-4xl gradient-text text-center mb-12"
-      >
-        About Me
-      </motion.h2>
-
+  <section id="about" className="py-28 px-4">
+    <div className="max-w-5xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="glass rounded-2xl p-8 md:p-12 animate-border-glow relative overflow-hidden"
+        transition={{ duration: 0.7 }}
+        className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-12 items-start"
       >
-        <div className="absolute inset-0 animate-shimmer rounded-2xl" />
-        <div className="relative flex gap-4 items-start">
-          <div className="hidden sm:flex p-3 rounded-xl bg-primary/10 text-primary shrink-0">
-            <User size={24} />
-          </div>
-          <p className="text-foreground/85 text-base md:text-lg leading-relaxed font-body">
-            I'm a Computer Science student at Lovely Professional University with a strong foundation
-            in AI, machine learning, and full stack development. I'm drawn to building systems that
-            solve real problems — whether that's reducing LLM hallucinations by 75% with RAG pipelines
-            or helping people manage their finances in under 30 seconds with a mobile app. My goal is
-            to join a forward-thinking tech team where I can contribute to impactful, production-grade
-            software while continuing to grow as an engineer.
+        {/* Left — short intro */}
+        <div>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-5">
+            CS student who builds things
+            <br />
+            <span className="gradient-text">that actually work.</span>
+          </h2>
+          <p className="text-foreground/55 text-sm leading-relaxed font-body">
+            B.Tech CSE @ LPU. I focus on AI/ML systems and full stack apps — 
+            shipping code that reduces real problems, not just demos.
           </p>
+        </div>
+
+        {/* Divider */}
+        <div className="hidden md:block w-px h-full bg-border" />
+
+        {/* Right — metrics */}
+        <div className="grid grid-cols-2 gap-6">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * i }}
+            >
+              <p className="font-display font-bold text-2xl gradient-text">{s.value}</p>
+              <p className="text-xs text-muted-foreground font-body mt-1">{s.label}</p>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </div>
