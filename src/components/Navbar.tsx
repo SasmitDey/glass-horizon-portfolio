@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import MagneticButton from "./ui/MagneticButton";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -49,19 +50,20 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-center h-14">
-        <div className="hidden md:flex gap-0.5">
+        <div className="hidden md:flex gap-4">
           {navLinks.map(({ label, href }) => (
-            <a
-              key={href}
-              href={href}
-              className={`px-3 py-1.5 text-xs font-display font-medium rounded-full transition-all ${
-                active === href
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {label}
-            </a>
+            <MagneticButton key={href} strength={20}>
+              <a
+                href={href}
+                className={`px-3 py-1.5 text-xs font-display font-medium rounded-full transition-all ${
+                  active === href
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {label}
+              </a>
+            </MagneticButton>
           ))}
         </div>
 

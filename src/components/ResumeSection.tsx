@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Download, FileText } from "lucide-react";
 
 // TODO: Replace with your actual resume PDF path
-const RESUME_URL = "/placeholder.svg";
+const RESUME_URL = "/resume/Sasmit_Dey_Resume.pdf";
 
 // TODO: Replace with your actual resume preview image
-const RESUME_PREVIEW_IMAGE = "/placeholder.svg";
+const RESUME_PREVIEW_IMAGE = "/resume/preview.jpg";
 
 const ResumeSection = () => (
   <section id="resume" className="py-28 px-4">
@@ -14,7 +14,7 @@ const ResumeSection = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-display font-bold text-2xl md:text-3xl text-foreground mb-12"
+        className="font-display font-bold text-2xl md:text-3xl text-foreground mb-12 text-center md:text-left"
       >
         Resume
       </motion.h2>
@@ -23,39 +23,49 @@ const ResumeSection = () => (
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="glass rounded-2xl p-6 md:p-8"
+        className="glass rounded-2xl p-6 md:p-10"
       >
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-start">
-          {/* Resume preview */}
-          <div className="rounded-xl overflow-hidden border border-border bg-muted/30 aspect-[8.5/11] max-h-[500px] flex items-center justify-center">
-            {/* TODO: Replace src with actual resume preview image */}
-            <img
-              src={RESUME_PREVIEW_IMAGE}
-              alt="Resume preview"
-              className="w-full h-full object-contain opacity-40"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          {/* Resume preview with refined compact sizing */}
+          <div className="rounded-xl overflow-hidden border border-border bg-white/5 aspect-[8.5/11] max-h-[510px] shadow-2xl relative group mx-auto md:mx-0 w-full max-w-[410px]">
+            <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#323639]"> 
+              <iframe
+                src={`${RESUME_URL}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                className="absolute top-[-42px] left-[-10%] w-[120%] h-[calc(100%+42px)] border-none"
+                title="Resume Preview"
+                style={{ pointerEvents: "none" }}
+              />
+            </div>
+            {/* Aesthetic overlay */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-primary/5 via-transparent to-background/20" />
           </div>
 
           {/* Download area */}
-          <div className="flex flex-col gap-4 md:pt-4">
-            <div className="flex items-center gap-2 text-foreground/60 mb-2">
-              <FileText size={18} className="text-primary" />
-              <span className="text-sm font-body">PDF · Updated 2025</span>
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-8 lg:pl-6">
+            <div className="space-y-2">
+              <h3 className="font-display font-bold text-xl text-foreground">Sasmit Dey Sarkar</h3>
+              <p className="text-muted-foreground text-sm font-body">Software Developer · AI & ML</p>
             </div>
 
-            <a
-              href={RESUME_URL}
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-display font-semibold text-sm hover:scale-[1.03] transition-transform glow-amber"
-            >
-              <Download size={14} /> Download Resume
-            </a>
+            <div className="flex items-center gap-2 text-foreground/60">
+              <FileText size={18} className="text-primary" />
+              <span className="text-sm font-body font-medium">PDF Document · 2026 Version</span>
+            </div>
 
-            <p className="text-xs text-muted-foreground font-body mt-2 max-w-[200px]">
-              Click to download or right-click to save as PDF.
-            </p>
+            <div className="flex flex-col gap-3 w-full sm:w-auto">
+              <a
+                href={RESUME_URL}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-display font-bold text-sm hover:scale-[1.05] active:scale-95 transition-all glow-amber shadow-xl"
+              >
+                <Download size={16} /> Download Resume
+              </a>
+              <p className="text-[11px] text-muted-foreground font-body text-center md:text-left px-2">
+                Verified PDF · 45KB · High Quality Print
+              </p>
+            </div>
           </div>
         </div>
       </motion.div>

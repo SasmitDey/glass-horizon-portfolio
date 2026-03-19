@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
+import StatusBadge from "./StatusBadge";
 
 const roles = ["AI Developer", "Problem Solver"];
 
@@ -30,6 +31,31 @@ const ScrambleText = ({ text }: { text: string }) => {
   return <span>{displayed}</span>;
 };
 
+const KineticText = ({ text, className }: { text: string; className?: string }) => {
+  const letters = text.split("");
+  
+  return (
+    <motion.span className={className} style={{ display: "inline-block" }}>
+      {letters.map((letter, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2 + i * 0.05,
+            ease: [0.2, 0.65, 0.3, 0.9]
+          }}
+          className="inline-block"
+          style={{ whiteSpace: letter === " " ? "pre" : "normal" }}
+        >
+          {letter}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
+
 const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
 
@@ -41,8 +67,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4">
+    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="text-center max-w-4xl mx-auto">
+        <StatusBadge />
+        
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,18 +83,18 @@ const HeroSection = () => {
             </span>
           </div>
 
-          <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
-            <span className="gradient-text">Sasmit</span>
+          <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 select-none">
+            <KineticText text="Sasmit" className="gradient-text" />
             <br />
-            <span className="text-foreground">Dey Sarkar</span>
+            <KineticText text="Dey Sarkar" className="text-foreground" />
           </h1>
 
           <p className="text-foreground/60 text-base md:text-lg max-w-lg mx-auto mb-4 font-body leading-relaxed">
-            Building intelligent systems — from RAG pipelines to real-time mobile apps.
+            Building intelligent systems — from RAG pipelines to scalable machine learning solutions.
           </p>
 
           <p className="text-muted-foreground text-sm mb-12 font-body">
-            Software Developer · AI & Full Stack
+            Software Developer · AI & ML
           </p>
         </motion.div>
 
@@ -83,7 +111,10 @@ const HeroSection = () => {
             View My Work <ArrowDown size={14} />
           </a>
           <a
-            href="#resume"
+            href="/resume/Sasmit_Dey_Resume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border text-foreground/70 font-display font-medium text-sm hover:border-primary/30 hover:text-foreground transition-all"
           >
             <Download size={14} /> Resume

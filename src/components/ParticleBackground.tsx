@@ -25,23 +25,38 @@ const ParticleBackground = () => {
           color: { value: ["#F59E0B", "#FB7185", "#D4A574"] },
           move: {
             enable: true,
-            speed: 0.3,
+            speed: 0.6,
             direction: "none",
-            random: true,
+            random: false,
             straight: false,
-            outModes: { default: "bounce" },
+            outModes: { default: "out" },
+            attract: { enable: true, rotateX: 600, rotateY: 1200 }
           },
-          number: { value: 25, density: { enable: true } },
-          opacity: { value: { min: 0.05, max: 0.15 } },
+          number: { value: 120, density: { enable: true, area: 800 } },
+          opacity: { 
+            value: { min: 0.1, max: 0.4 },
+            animation: { enable: true, speed: 1, sync: false }
+          },
           shape: { type: "circle" },
-          size: { value: { min: 1, max: 2.5 } },
+          size: { value: { min: 1, max: 2 } },
           links: {
             enable: true,
-            distance: 180,
+            distance: 150,
             color: "#F59E0B",
-            opacity: 0.04,
+            opacity: 0.15,
             width: 1,
+            triangles: { enable: true, opacity: 0.02 }
           },
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "grab" },
+            onClick: { enable: true, mode: "push" },
+          },
+          modes: {
+            grab: { distance: 200, links: { opacity: 0.5 } },
+            push: { quantity: 4 }
+          }
         },
         detectRetina: true,
       }}

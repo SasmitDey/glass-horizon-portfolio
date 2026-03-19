@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import TextReveal from "@/components/ui/TextReveal";
 
 const stats = [
   { value: "75%", label: "LLM hallucination reduction" },
@@ -19,15 +20,16 @@ const AboutSection = () => (
       >
         {/* Left — short intro */}
         <div>
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-5">
-            CS student who builds things
-            <br />
-            <span className="gradient-text">that actually work.</span>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-5 overflow-hidden">
+            <TextReveal text="CS student who builds things" className="block" />
+            <span className="gradient-text inline-block mt-1">that actually work.</span>
           </h2>
-          <p className="text-foreground/55 text-sm leading-relaxed font-body">
-            B.Tech CSE @ LPU. I focus on AI/ML systems and full stack apps — 
-            shipping code that reduces real problems, not just demos.
-          </p>
+          <div className="text-foreground/55 text-sm leading-relaxed font-body">
+            <TextReveal 
+              text="B.Tech CSE @ LPU. I focus on AI/ML systems and full stack apps — shipping code that reduces real problems, not just demos." 
+              delay={0.2}
+            />
+          </div>
         </div>
 
         {/* Divider */}

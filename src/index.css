@@ -49,6 +49,7 @@
   * {
     @apply border-border;
     scrollbar-width: none;
+    cursor: none !important;
   }
 
   *::-webkit-scrollbar {
@@ -57,6 +58,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   body {
