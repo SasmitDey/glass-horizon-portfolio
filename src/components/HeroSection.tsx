@@ -83,7 +83,7 @@ const HeroSection = () => {
             View My Work <ArrowDown size={14} />
           </a>
           <a
-            href="#contact"
+            href="#resume"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border text-foreground/70 font-display font-medium text-sm hover:border-primary/30 hover:text-foreground transition-all"
           >
             <Download size={14} /> Resume
