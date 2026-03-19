@@ -11,6 +11,7 @@ import AchievementsSection from "@/components/AchievementsSection";
 import EducationSection from "@/components/EducationSection";
 import ResumeSection from "@/components/ResumeSection";
 import ContactSection from "@/components/ContactSection";
+import SectionReveal from "@/components/SectionReveal";
 
 const Index = () => (
   <div className="relative min-h-screen overflow-x-hidden">
@@ -19,15 +20,33 @@ const Index = () => (
     <Navbar />
     <main className="relative z-10">
       <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <TrainingSection />
-      <ToolsTable />
-      <AchievementsSection />
-      <EducationSection />
-      <ResumeSection />
-      <ContactSection />
+      <SectionReveal>
+        <AboutSection />
+      </SectionReveal>
+      <SectionReveal>
+        <SkillsSection />
+      </SectionReveal>
+      <SectionReveal>
+        <ProjectsSection />
+      </SectionReveal>
+      <SectionReveal>
+        <TrainingSection />
+      </SectionReveal>
+      <SectionReveal>
+        <ToolsTable />
+      </SectionReveal>
+      <SectionReveal>
+        <AchievementsSection />
+      </SectionReveal>
+      <SectionReveal>
+        <EducationSection />
+      </SectionReveal>
+      <SectionReveal>
+        <ResumeSection />
+      </SectionReveal>
+      <SectionReveal>
+        <ContactSection />
+      </SectionReveal>
     </main>
   </div>
 );
