@@ -1,70 +1,97 @@
-import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
+import { useEffect, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 
-const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center px-4">
-    <div className="text-center max-w-4xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="text-muted-foreground text-sm md:text-base font-body tracking-widest uppercase mb-4">
-          Software Developer · AI & Full Stack
-        </p>
+const roles = ["AI Developer", "Full Stack Engineer", "Problem Solver"];
 
-        <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl gradient-text leading-tight mb-6">
-          Sasmit Dey Sarkar
-        </h1>
+const ScrambleText = ({ text }: { text: string }) => {
+  const [displayed, setDisplayed] = useState("");
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&";
 
-        <div className="h-8 mb-4">
-          <TypeAnimation
-            sequence={[
-              "AI Developer",
-              2000,
-              "Full Stack Engineer",
-              2000,
-              "Problem Solver",
-              2000,
-            ]}
-            wrapper="span"
-            speed={50}
-            className="text-secondary text-lg md:text-xl font-display font-medium"
-            repeat={Infinity}
-          />
-        </div>
+  useEffect(() => {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setDisplayed(
+        text
+          .split("")
+          .map((char, i) => {
+            if (char === " ") return " ";
+            if (i < iteration) return text[i];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("")
+      );
+      iteration += 1 / 2;
+      if (iteration > text.length) clearInterval(interval);
+    }, 40);
+    return () => clearInterval(interval);
+  }, [text]);
 
-        <p className="text-foreground/80 text-base md:text-lg max-w-2xl mx-auto mb-3 font-body">
-          Building intelligent systems — from RAG pipelines to real-time mobile apps.
-        </p>
+  return <span>{displayed}</span>;
+};
 
-        <p className="text-muted-foreground text-sm md:text-base mb-10 font-body">
-          B.Tech CSE @ LPU · 8.66 CGPA · AI/ML Enthusiast · Hackathon Finalist
-        </p>
-      </motion.div>
+const HeroSection = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="flex flex-col sm:flex-row gap-4 justify-center"
-      >
-        <a
-          href="#projects"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-sm glow-violet hover:scale-105 transition-transform"
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center px-4">
+      <div className="text-center max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          View My Work <ArrowDown size={16} />
-        </a>
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 text-foreground font-display font-semibold text-sm hover:bg-white/5 transition-colors"
+          {/* Scramble role */}
+          <div className="h-7 mb-8 flex justify-center">
+            <span className="text-sm tracking-[0.3em] uppercase font-display text-muted-foreground">
+              <ScrambleText text={roles[roleIndex]} />
+            </span>
+          </div>
+
+          <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
+            <span className="gradient-text">Sasmit</span>
+            <br />
+            <span className="text-foreground">Dey Sarkar</span>
+          </h1>
+
+          <p className="text-foreground/60 text-base md:text-lg max-w-lg mx-auto mb-4 font-body leading-relaxed">
+            Building intelligent systems — from RAG pipelines to real-time mobile apps.
+          </p>
+
+          <p className="text-muted-foreground text-sm mb-12 font-body">
+            Software Developer · AI & Full Stack
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Download size={16} /> Download Resume
-        </a>
-      </motion.div>
-    </div>
-  </section>
-);
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-display font-semibold text-sm glow-amber hover:scale-[1.03] transition-all"
+          >
+            View My Work <ArrowDown size={14} />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border text-foreground/70 font-display font-medium text-sm hover:border-primary/30 hover:text-foreground transition-all"
+          >
+            <Download size={14} /> Resume
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default HeroSection;

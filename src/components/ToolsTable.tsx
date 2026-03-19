@@ -9,38 +9,32 @@ const rows = [
 ];
 
 const ToolsTable = () => (
-  <section className="py-24 px-4">
+  <section className="py-28 px-4">
     <div className="max-w-4xl mx-auto">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-display font-bold text-3xl md:text-4xl gradient-text text-center mb-12"
+        className="font-display font-bold text-2xl md:text-3xl text-foreground mb-12"
       >
-        Tools & Platforms
+        Stack
       </motion.h2>
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="glass rounded-2xl overflow-hidden"
       >
         <table className="w-full">
-          <thead>
-            <tr className="border-b border-white/10">
-              <th className="text-left px-6 py-4 font-display font-semibold text-sm text-foreground">Category</th>
-              <th className="text-left px-6 py-4 font-display font-semibold text-sm text-foreground">Tools & Platforms</th>
-            </tr>
-          </thead>
           <tbody>
-            {rows.map((row) => (
+            {rows.map((row, i) => (
               <tr
                 key={row.category}
-                className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                className={`hover:bg-white/[0.03] transition-colors ${i < rows.length - 1 ? "border-b border-border" : ""}`}
               >
-                <td className="px-6 py-4 text-sm font-medium text-primary font-display">{row.category}</td>
-                <td className="px-6 py-4 text-sm text-foreground/75 font-body">{row.tools}</td>
+                <td className="px-6 py-4 text-sm font-display font-semibold text-primary w-[140px]">{row.category}</td>
+                <td className="px-6 py-4 text-sm text-foreground/50 font-body">{row.tools}</td>
               </tr>
             ))}
           </tbody>
