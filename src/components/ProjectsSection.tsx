@@ -68,7 +68,7 @@ const ProjectsSection = () => (
             variants={cardVariants}
             className="w-full"
           >
-            <TiltCard className="glass rounded-2xl group border border-border/50 transition-all relative overflow-hidden h-full">
+            <TiltCard className="glass rounded-2xl group border border-border/50 transition-all relative h-full">
               {/* Accent line */}
               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
