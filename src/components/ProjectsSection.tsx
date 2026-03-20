@@ -93,12 +93,27 @@ const ProjectsSection = () => (
                       <h3 className="font-display font-bold text-lg text-foreground">{p.title}</h3>
                       <span className="text-xs text-muted-foreground">{p.date}</span>
                     </div>
-                    <div className="flex gap-3 shrink-0 relative z-20">
-                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <div 
+                      className="flex gap-3 shrink-0 relative z-[50]"
+                      style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}
+                    >
+                      <a 
+                        href={p.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 border border-border/50 text-muted-foreground hover:text-primary hover:bg-muted hover:border-primary/50 transition-all shadow-sm"
+                        aria-label="View Source on GitHub"
+                      >
                         <Github size={18} />
                       </a>
                       {p.live && (
-                        <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        <a 
+                          href={p.live} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 border border-border/50 text-muted-foreground hover:text-primary hover:bg-muted hover:border-primary/50 transition-all shadow-sm"
+                          aria-label="View Live Project"
+                        >
                           <ExternalLink size={18} />
                         </a>
                       )}
