@@ -84,7 +84,14 @@ const HeroSection = () => {
           </div>
 
           <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 select-none">
-            <KineticText text="Sasmit" className="gradient-text" />
+                        <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="gradient-text inline-block"
+            >
+              Sasmit
+            </motion.span>
             <br />
             <KineticText text="Dey Sarkar" className="text-foreground" />
           </h1>

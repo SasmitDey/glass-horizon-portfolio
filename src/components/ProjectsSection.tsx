@@ -93,12 +93,12 @@ const ProjectsSection = () => (
                       <h3 className="font-display font-bold text-lg text-foreground">{p.title}</h3>
                       <span className="text-xs text-muted-foreground">{p.date}</span>
                     </div>
-                    <div className="flex gap-3 shrink-0">
-                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors z-10">
+                    <div className="flex gap-3 shrink-0 relative z-20">
+                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Github size={18} />
                       </a>
                       {p.live && (
-                        <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors z-10">
+                        <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                           <ExternalLink size={18} />
                         </a>
                       )}
